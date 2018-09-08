@@ -2,5 +2,5 @@ ofxRealtimeShader
 
 ====
 
-the shader addon for livecoding
+the simple addon for glsl livecoding
 
