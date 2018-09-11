@@ -20,6 +20,7 @@ private:
     time_t fLast_saved_time;
     time_t gLast_saved_time;
 
+    bool isAutoReload = true;
 public:
     bool load(string vertName, string fragName, string geomName="") {
         this->vName = vertName;
@@ -29,6 +30,8 @@ public:
     }
     
     void update() {
+        if(! isAutoReload) return;
+        
         int check_interval = 1000;
         if (ofGetElapsedTimeMillis() - last_check_time > check_interval) {
             last_check_time = ofGetElapsedTimeMillis();
@@ -51,6 +54,14 @@ public:
                 gLast_saved_time = gSaved_time;
             }
         }
+    }
+    
+    void setEnable() {
+        isAutoReload = true;
+    }
+    
+    void setDisable() {
+        isAutoReload = false;
     }
 };
 
